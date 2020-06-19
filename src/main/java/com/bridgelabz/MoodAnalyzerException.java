@@ -3,9 +3,18 @@ package com.bridgelabz;
 public class MoodAnalyzerException extends Exception {
     /**
      * Calling Constructor Of Parent class means Exception
+     *
      * @param message
      */
-    public MoodAnalyzerException(String message) {
+    enum exeptiontype {
+        ENTEREDNULLL, ENTEREDEMPTY
+
+    }
+
+    exeptiontype type;
+
+    public MoodAnalyzerException(exeptiontype type, String message) {
         super(message);
+        this.type = type;
     }
 }
