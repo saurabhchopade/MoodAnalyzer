@@ -1,13 +1,23 @@
 package com.bridgelabz;
 
 public class MoodAnalyzer {
+    String messege;
+
     /**
-     * Simple Happy Sad Check
+     * Parameterized Constructor
      *
      * @param messege
+     */
+    public MoodAnalyzer(String messege) {
+        this.messege = messege;
+    }
+
+    /**
+     * analyzing mood By this method
+     *
      * @return
      */
-    public String analyzeMood(String messege) {
+    public String analyzeMood() {
         if (messege.contains("sad")) {
             return "SAD";
         } else {
