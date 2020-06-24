@@ -5,12 +5,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class MoodAnalyzerTest {
+import java.lang.reflect.Constructor;
+
+public class MoodAnalyzerTest extends Exception {
 
     MoodAnalyzer moodAnalyzer;
 
     @Before
     public void init() {
+
         moodAnalyzer = new MoodAnalyzer(null);
     }
 
@@ -48,5 +51,14 @@ public class MoodAnalyzerTest {
         } catch (MoodAnalyzerException e) {
             Assert.assertEquals(MoodAnalyzerException.exeptiontype.ENTEREDNULLL, e.type);
         }
+    }
+    // =================================Reflection======================================
+    @Test
+    public void usingReflection_GivenMessage_ShouldReturnClassObject() throws Exception {
+        Constructor constructor = Class.forName("com.bridgelabz.MoodAnalyzer").getConstructor(String.class);
+        Object obj = (MoodAnalyzer) constructor.newInstance("i am sad");
+        MoodAnalyzer moodanalyzer = (MoodAnalyzer) obj;
+        String returnobjvalue = moodanalyzer.analyzeMood();
+        Assert.assertEquals("SAD", returnobjvalue);
     }
 }
