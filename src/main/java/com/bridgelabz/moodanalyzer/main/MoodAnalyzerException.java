@@ -1,4 +1,4 @@
-package com.bridgelabz;
+package com.bridgelabz.moodanalyzer.main;
 
 public class MoodAnalyzerException extends Exception {
     /**

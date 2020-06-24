@@ -1,4 +1,4 @@
-package com.bridgelabz;
+package com.bridgelabz.moodanalyzer.main;
 
 public class MoodAnalyzer {
     String messege;
@@ -6,10 +6,10 @@ public class MoodAnalyzer {
     /**
      * Parameterized Constructor
      *
-     * @param messege
+     * @param massage
      */
-    public MoodAnalyzer(String messege) {
-        this.messege = messege;
+    public MoodAnalyzer(String massage) {
+        this.messege = massage;
     }
 
     /**
