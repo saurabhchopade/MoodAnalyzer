@@ -1,5 +1,7 @@
 package com.bridgelabz.moodanalyzer.main;
 
+import com.bridgelabz.moodanalyzer.service.MoodAnalyzerException;
+import com.bridgelabz.moodanalyzer.service.MoodAnalyzerFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,15 +65,14 @@ public class MoodAnalyzerTest extends Exception {
     }
 
     @Test
-    public void givenClassName_NotCorrect_ShouldHandleException() throws Exception {
+    public void givenClassName_NotCorrect_ShouldHandleException() {
         try {
             Constructor constructor = Class.forName("com.bridgelabz.moodanalyzer.main.Moer").getConstructor(String.class);
             Object obj = (MoodAnalyzer) constructor.newInstance("i am sad");
             MoodAnalyzer moodanalyzer = (MoodAnalyzer) obj;
             String returnobjvalue = moodanalyzer.analyzeMood();
             Assert.assertEquals("SAD", returnobjvalue);
-        }catch (MoodAnalyzerException | ClassNotFoundException e)
-        {
+        } catch (MoodAnalyzerException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
             e.printStackTrace();
@@ -104,4 +105,21 @@ public class MoodAnalyzerTest extends Exception {
             e.printStackTrace();
         }
     }
+
+    //===================Parameterized object============================================================
+    @Test
+    public void createMoodAnalyzerParameterizedObjectThroughFactoryClass_IfObjectEqual_TestWillPass() throws Exception {
+        MoodAnalyzer mooder = MoodAnalyzerFactory.createMood("i am sad");
+        String mood = mooder.analyzeMood();
+        Assert.assertEquals("SAD", mood);
+    }
+
+    //=======================Checking With Two Objects=======================================================
+    @Test
+    public void createMoodAnalyzerObjectThroughFactoryClass_IfTwoObjectEqual_TestWillPass() throws Exception {
+        MoodAnalyzer mood1 = MoodAnalyzerFactory.createMood("i am sad");
+        MoodAnalyzer mood2 = new MoodAnalyzer("i am sad");
+        Assert.assertTrue(mood2.like(mood1));
+    }
+//===========================================================================================================
 }

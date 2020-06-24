@@ -1,5 +1,7 @@
 package com.bridgelabz.moodanalyzer.main;
 
+import com.bridgelabz.moodanalyzer.service.MoodAnalyzerException;
+
 public class MoodAnalyzer {
     String messege;
 
@@ -10,6 +12,11 @@ public class MoodAnalyzer {
      */
     public MoodAnalyzer(String massage) {
         this.messege = massage;
+    }
+
+    public String analyzeMood(String messege) throws MoodAnalyzerException {
+        this.messege = messege;
+        return analyzeMood();
     }
 
     /**
@@ -28,6 +35,14 @@ public class MoodAnalyzer {
             }
         } catch (NullPointerException e) {
             throw new MoodAnalyzerException(MoodAnalyzerException.exeptiontype.ENTEREDNULLL, "Please Enter Proper Mood");
+        }
+    }
+//Here We Are Checking Two Objects Are Same Or Not
+    public boolean like(MoodAnalyzer another) {
+        if (this.messege.equals(another.messege)) {
+            return true;
+        } else {
+            return false;
         }
     }
 
