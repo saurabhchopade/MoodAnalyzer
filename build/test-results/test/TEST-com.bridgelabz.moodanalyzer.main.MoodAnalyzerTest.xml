@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-24T20:38:11" hostname="saurabh3250" time="0.004">
+<testsuite name="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-24T20:54:48" hostname="saurabh3250" time="0.002">
   <properties/>
-  <testcase name="createMoodAnalyzeNonParameterrizedObjectThroughFactoryClass_IfObjectEqual_TestWillPass" classname="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" time="0.004"/>
+  <testcase name="createMoodAnalyzeForNonParaCheck_IfTwoObjectEqual_TestWillPass" classname="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

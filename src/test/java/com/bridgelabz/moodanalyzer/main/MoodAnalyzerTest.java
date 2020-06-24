@@ -124,10 +124,18 @@ public class MoodAnalyzerTest extends Exception {
 //=========================================Reflection With Default Constructor============================================================
 
     @Test
-    public void createMoodAnalyzeObjectThroughFactoryClass_IfObjectEqual_TestWillPass() throws Exception {
+    public void createMoodAnalyzeObjectThroughFactoryParaClass_IfMatchesValues_TestWillPass() throws Exception {
         MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerFactory.createMood1();
-        String mood=mooder.analyzeMood( "sad");
+        String mood = mooder.analyzeMood("sad");
         Assert.assertEquals("SAD", mood);
     }
 
+    @Test
+    public void createMoodAnalyzeForNonParaCheck_IfTwoObjectEqual_TestWillPass() throws Exception {
+        MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerFactory.createMood1();
+        String obj1 = mooder.analyzeMood("sad");
+        MoodAnalyzer mood2=new MoodAnalyzer("i am sad");
+        String obj2=mood2.analyzeMood();
+        Assert.assertEquals(obj1,obj2);
+    }
 }
