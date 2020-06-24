@@ -84,4 +84,24 @@ public class MoodAnalyzerTest extends Exception {
         }
     }
 
+    @Test
+    public void givenConstructor_ParametersNotCorrect_ShouldHandleException() {
+        try {
+            Constructor constructor = Class.forName("com.bridgelabz.moodanalyzer.main.MoodAnalyzer").getConstructor(String.class);
+            Object obj = (MoodAnalyzer) constructor.newInstance();
+            MoodAnalyzer moodanalyzer = (MoodAnalyzer) obj;
+            String returnobjvalue = moodanalyzer.analyzeMood();
+            Assert.assertEquals("SAD", returnobjvalue);
+        } catch (MoodAnalyzerException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-24T17:17:10" hostname="saurabh3250" time="0.018">
+<testsuite name="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-06-24T17:19:34" hostname="saurabh3250" time="0.005">
   <properties/>
-  <testcase name="givenClassName_NotCorrect_ShouldHandleException" classname="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" time="0.018"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[java.lang.ClassNotFoundException: com.bridgelabz.mood
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:583)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:332)
-	at com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest.givenClassName_NotCorrect_ShouldHandleException(MoodAnalyzerTest.java:68)
+  <testcase name="givenConstructor_ParametersNotCorrect_ShouldHandleException" classname="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" time="0.005">
+    <failure message="java.lang.IllegalArgumentException: wrong number of arguments" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: wrong number of arguments
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest.givenConstructor_ParametersNotCorrect_ShouldHandleException(MoodAnalyzerTest.java:91)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -58,5 +57,8 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
 	at java.base/java.lang.Thread.run(Thread.java:835)
-]]></system-err>
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>
