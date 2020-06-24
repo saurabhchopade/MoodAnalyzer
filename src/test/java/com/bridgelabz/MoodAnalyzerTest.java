@@ -10,7 +10,6 @@ import java.lang.reflect.Constructor;
 public class MoodAnalyzerTest extends Exception {
 
     MoodAnalyzer moodAnalyzer;
-
     @Before
     public void init() {
 
