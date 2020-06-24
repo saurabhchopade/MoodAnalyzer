@@ -134,8 +134,20 @@ public class MoodAnalyzerTest extends Exception {
     public void createMoodAnalyzeForNonParaCheck_IfTwoObjectEqual_TestWillPass() throws Exception {
         MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerFactory.createMood1();
         String obj1 = mooder.analyzeMood("sad");
-        MoodAnalyzer mood2=new MoodAnalyzer("i am sad");
-        String obj2=mood2.analyzeMood();
-        Assert.assertEquals(obj1,obj2);
+        MoodAnalyzer mood2 = new MoodAnalyzer("i am sad");
+        String obj2 = mood2.analyzeMood();
+        Assert.assertEquals(obj1, obj2);
     }
+
+    @Test
+    public void giveWrongConstructor_HandleException_TestWillNotPass() throws Exception {
+        try {
+            MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerFactory.createMood1();
+            String mood = mooder.analyzeMood(" ");
+            Assert.assertEquals("SAD", mood);
+        } catch (MoodAnalyzerException e) {
+
+        }
+    }
+
 }
