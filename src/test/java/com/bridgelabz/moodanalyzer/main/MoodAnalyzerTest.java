@@ -54,7 +54,7 @@ public class MoodAnalyzerTest extends Exception {
             Assert.assertEquals(MoodAnalyzerException.exeptiontype.ENTEREDNULLL, e.type);
         }
     }
-    // =================================Reflection======================================
+    // =================================Reflection With Parameterized Constructor======================================
     @Test
     public void usingReflection_GivenMessage_ShouldReturnClassObject() throws Exception {
         Constructor constructor = Class.forName("com.bridgelabz.moodanalyzer.main.MoodAnalyzer").getConstructor(String.class);
@@ -121,5 +121,33 @@ public class MoodAnalyzerTest extends Exception {
         MoodAnalyzer mood2 = new MoodAnalyzer("i am sad");
         Assert.assertTrue(mood2.like(mood1));
     }
-//===========================================================================================================
+//=========================================Reflection With Default Constructor============================================================
+
+    @Test
+    public void createMoodAnalyzeObjectThroughFactoryParaClass_IfMatchesValues_TestWillPass() throws Exception {
+        MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerFactory.createMood1();
+        String mood = mooder.analyzeMood("sad");
+        Assert.assertEquals("SAD", mood);
+    }
+
+    @Test
+    public void createMoodAnalyzeForNonParaCheck_IfTwoObjectEqual_TestWillPass() throws Exception {
+        MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerFactory.createMood1();
+        String obj1 = mooder.analyzeMood("sad");
+        MoodAnalyzer mood2 = new MoodAnalyzer("i am sad");
+        String obj2 = mood2.analyzeMood();
+        Assert.assertEquals(obj1, obj2);
+    }
+
+    @Test
+    public void giveWrongConstructor_HandleException_TestWillNotPass() throws Exception {
+        try {
+            MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerFactory.createMood1();
+            String mood = mooder.analyzeMood(" ");
+            Assert.assertEquals("SAD", mood);
+        } catch (MoodAnalyzerException e) {
+
+        }
+    }
+
 }

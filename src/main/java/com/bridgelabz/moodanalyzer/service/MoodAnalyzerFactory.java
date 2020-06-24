@@ -12,4 +12,11 @@ public class MoodAnalyzerFactory {
         Object objofmoodanalyzer = constructor.newInstance(message);
         return (MoodAnalyzer) objofmoodanalyzer;
     }
+
+    public  static  MoodAnalyzer createMood1() throws Exception {
+        Class c1 = Class.forName("com.bridgelabz.moodanalyzer.main.MoodAnalyzer");
+        Constructor constructor1 = MoodAnalyzer.class.getConstructor();
+        Object objofmoodanalyzer1 = constructor1.newInstance();
+        return (MoodAnalyzer) objofmoodanalyzer1;
+    }
 }

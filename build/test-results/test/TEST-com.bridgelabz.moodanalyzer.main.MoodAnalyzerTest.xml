@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-06-24T20:07:15" hostname="saurabh3250" time="0.005">
+<testsuite name="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-06-24T21:55:11" hostname="saurabh3250" time="0.005">
   <properties/>
-  <testcase name="givenConstructor_ParametersNotCorrect_ShouldHandleException" classname="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" time="0.005">
-    <failure message="java.lang.IllegalArgumentException: wrong number of arguments" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: wrong number of arguments
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
-	at com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest.givenConstructor_ParametersNotCorrect_ShouldHandleException(MoodAnalyzerTest.java:92)
+  <testcase name="giveWrongConstructor_HandleException_TestWillNotPass" classname="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" time="0.005">
+    <failure message="org.junit.ComparisonFailure: expected:&lt;[SAD]&gt; but was:&lt;[HAPPY]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;[SAD]&gt; but was:&lt;[HAPPY]&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest.giveWrongConstructor_HandleException_TestWillNotPass(MoodAnalyzerTest.java:147)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

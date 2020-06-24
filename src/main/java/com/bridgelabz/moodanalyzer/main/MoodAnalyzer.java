@@ -3,19 +3,26 @@ package com.bridgelabz.moodanalyzer.main;
 import com.bridgelabz.moodanalyzer.service.MoodAnalyzerException;
 
 public class MoodAnalyzer {
-    String messege;
+    String message;
 
+    /**
+     * Default Constructor
+     */
+    public MoodAnalyzer()
+    {
+
+    }
     /**
      * Parameterized Constructor
      *
      * @param massage
      */
     public MoodAnalyzer(String massage) {
-        this.messege = massage;
+        this.message = massage;
     }
 
-    public String analyzeMood(String messege) throws MoodAnalyzerException {
-        this.messege = messege;
+    public String analyzeMood(String message) throws MoodAnalyzerException {
+        this.message = message;
         return analyzeMood();
     }
 
@@ -26,9 +33,9 @@ public class MoodAnalyzer {
      */
     public String analyzeMood() throws MoodAnalyzerException {
         try {
-            if (messege.length() == 0)
+            if (message.length() == 0)
                 throw new MoodAnalyzerException(MoodAnalyzerException.exeptiontype.ENTEREDEMPTY, "Please Enter Proper Mood");
-            if (messege.contains("sad")) {
+            if (message.contains("sad")) {
                 return "SAD";
             } else {
                 return "HAPPY";
@@ -39,7 +46,7 @@ public class MoodAnalyzer {
     }
 //Here We Are Checking Two Objects Are Same Or Not
     public boolean like(MoodAnalyzer another) {
-        if (this.messege.equals(another.messege)) {
+        if (this.message.equals(another.message)) {
             return true;
         } else {
             return false;
