@@ -1,21 +1,19 @@
 package com.bridgelabz.moodanalyzer.main;
-
-import com.bridgelabz.moodanalyzer.service.MoodAnalyzerException;
+import com.bridgelabz.moodanalyzer.exception.MoodAnalyzerException;
 import com.bridgelabz.moodanalyzer.service.MoodAnalyzerReflector;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+@SuppressWarnings("ALL")
 public class MoodAnalyzerTest extends Exception {
 
     MoodAnalyzer moodAnalyzer;
     @Before
     public void init() {
-
         moodAnalyzer = new MoodAnalyzer();
     }
 
@@ -146,7 +144,6 @@ public class MoodAnalyzerTest extends Exception {
             String mood = mooder.analyzeMood(" ");
             Assert.assertEquals("SAD", mood);
         } catch (MoodAnalyzerException e) {
-
         }
     }
     //=========================Method Invoke======================================================
