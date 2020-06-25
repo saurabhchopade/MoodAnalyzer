@@ -1,14 +1,12 @@
 package com.bridgelabz.moodanalyzer.main;
+
 import com.bridgelabz.moodanalyzer.exception.MoodAnalyzerException;
 import com.bridgelabz.moodanalyzer.service.MoodAnalyzerReflector;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
-@SuppressWarnings("ALL")
 public class MoodAnalyzerTest extends Exception {
 
     MoodAnalyzer moodAnalyzer;
@@ -52,116 +50,58 @@ public class MoodAnalyzerTest extends Exception {
             Assert.assertEquals(MoodAnalyzerException.exeptiontype.ENTEREDNULLL, e.type);
         }
     }
-    // =================================Reflection With Parameterized Constructor======================================
+
+    //=========================================Default Constructor ============================================================
+    @Deprecated
     @Test
-    public void usingReflection_GivenMessage_ShouldReturnClassObject() throws Exception {
-        Constructor constructor = Class.forName("com.bridgelabz.moodanalyzer.main.MoodAnalyzer").getConstructor(String.class);
-        Object obj = (MoodAnalyzer) constructor.newInstance("i am sad");
-        MoodAnalyzer moodanalyzer = (MoodAnalyzer) obj;
-        String returnobjvalue = moodanalyzer.analyzeMood();
-        Assert.assertEquals("SAD", returnobjvalue);
+    public void checkTwoObjectEqual_IfTwoObjectEqualOfDefaultConstructor_TestWillPass() throws Exception {
+        MoodAnalyzer moodbyreflection = (MoodAnalyzer) MoodAnalyzerReflector.createMoodInvoke("com.bridgelabz.moodanalyzer.main.MoodAnalyzer", "analyzeMood", "i am sad", "object", "nonpara");
+        MoodAnalyzer moodbyanalyzer = new MoodAnalyzer("i am sad");
+        Assert.assertTrue(moodbyreflection.like(moodbyanalyzer));
     }
 
+    @Deprecated
     @Test
-    public void givenClassName_NotCorrect_ShouldHandleException() {
-        try {
-            Constructor constructor = Class.forName("com.bridgelabz.moodanalyzer.main.Moer").getConstructor(String.class);
-            Object obj = (MoodAnalyzer) constructor.newInstance("i am sad");
-            MoodAnalyzer moodanalyzer = (MoodAnalyzer) obj;
-            String returnobjvalue = moodanalyzer.analyzeMood();
-            Assert.assertEquals("SAD", returnobjvalue);
-        } catch (MoodAnalyzerException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+    public void givenClass_NotCorrecct_ShouldHandleExceptionShouldfail() throws Exception {
+        String moodbyreflection = (String) MoodAnalyzerReflector.createMoodInvoke("com.bridgelabz.moodanalyzer.main.ThisisIncorrectClassName", "analyzeMood", "i am sad", "string", "nonpara");
+        Assert.assertEquals("SAD", moodbyreflection);
     }
 
+    @Deprecated
     @Test
-    public void givenConstructor_ParametersNotCorrect_ShouldHandleException() {
-        try {
-            Constructor constructor = Class.forName("com.bridgelabz.moodanalyzer.main.MoodAnalyzer").getConstructor(String.class);
-            Object obj = (MoodAnalyzer) constructor.newInstance();
-            MoodAnalyzer moodanalyzer = (MoodAnalyzer) obj;
-            String returnobjvalue = moodanalyzer.analyzeMood();
-            Assert.assertEquals("SAD", returnobjvalue);
-        } catch (MoodAnalyzerException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+    public void givenMethodName_NotCorrecct_ShouldHandleExceptionShouldFail() throws Exception {
+        String moodbyreflection = (String) MoodAnalyzerReflector.createMoodInvoke("com.bridgelabz.moodanalyzer.main.MoodAnalyzer", "methodnameincorrect", "i am sad", "string", "nonpara");
+        Assert.assertEquals("SAD", moodbyreflection);
     }
 
-    //===================Parameterized object============================================================
+    //===========================================Default Parameterized ========================================================
+    @Deprecated
     @Test
-    public void createMoodAnalyzerParameterizedObjectThroughFactoryClass_IfObjectEqual_TestWillPass() throws Exception {
-        MoodAnalyzer mooder = MoodAnalyzerReflector.createMood("i am sad");
-        String mood = mooder.analyzeMood();
-        Assert.assertEquals("SAD", mood);
+    public void checkTwoObjectEqual_IfTwoObjectEqualofParameterized_TestWillPass() throws Exception {
+        MoodAnalyzer moodbyreflection = (MoodAnalyzer) MoodAnalyzerReflector.createMoodInvoke("com.bridgelabz.moodanalyzer.main.MoodAnalyzer", "analyzeMood", "i am sad", "object", "para");
+        MoodAnalyzer moodbyanalyzer = new MoodAnalyzer("i am sad");
+        Assert.assertTrue(moodbyreflection.like(moodbyanalyzer));
     }
 
-    //=======================Checking With Two Objects=======================================================
+    @Deprecated
     @Test
-    public void createMoodAnalyzerObjectThroughFactoryClass_IfTwoObjectEqual_TestWillPass() throws Exception {
-        MoodAnalyzer mood1 = MoodAnalyzerReflector.createMood("i am sad");
-        MoodAnalyzer mood2 = new MoodAnalyzer("i am sad");
-        Assert.assertTrue(mood2.like(mood1));
-    }
-//=========================================Reflection With Default Constructor============================================================
-
-    @Test
-    public void createMoodAnalyzeObjectThroughFactoryParaClass_IfMatchesValues_TestWillPass() throws Exception {
-        MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerReflector.createMoodInvoke();
-        String mood = mooder.analyzeMood("sad");
-        Assert.assertEquals("SAD", mood);
+    public void givenclassNameImproper_ofParameterized_ShouldTestFail() throws Exception {
+        String moodbyreflection = (String) MoodAnalyzerReflector.createMoodInvoke("com.bridgelabz.moodanalyzer.main.WrongclassName", "analyzeMood", "i am sad", "string", "para");
+        Assert.assertEquals("SAD", moodbyreflection);
     }
 
+    @Deprecated
     @Test
-    public void createMoodAnalyzeForNonParaCheck_IfTwoObjectEqual_TestWillPass() throws Exception {
-        MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerReflector.createMoodInvoke();
-        String obj1 = mooder.analyzeMood("sad");
-        MoodAnalyzer mood2 = new MoodAnalyzer("i am sad");
-        String obj2 = mood2.analyzeMood();
-        Assert.assertEquals(obj1, obj2);
-    }
+    public void givenMethodNameImproper_ofParameterized_ShouldTestFail() throws Exception {
+        String moodbyreflection = (String) MoodAnalyzerReflector.createMoodInvoke("com.bridgelabz.moodanalyzer.main.MoodAnalyzer", "WrongMethodNAme", "i am sad", "string", "para");
+        Assert.assertEquals("SAD", moodbyreflection);
 
-    @Test
-    public void giveWrongConstructor_HandleException_TestWillNotPass() throws Exception {
-        try {
-            MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerReflector.createMoodInvoke();
-            String mood = mooder.analyzeMood(" ");
-            Assert.assertEquals("SAD", mood);
-        } catch (MoodAnalyzerException e) {
-        }
     }
-    //=========================Method Invoke======================================================
+    @Deprecated
     @Test
-    public void usingReflector_InvokeMethodCall_ShouldReturnHappy() throws Exception {
-        MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerReflector.createMoodInvoke();
-        Assert.assertEquals("SAD",  mooder.analyzeMood("sad"));
-    }
+    public void givenAllProper_ofParameterized_ShouldTestCoreect() throws Exception {
+        String moodbyreflection = (String) MoodAnalyzerReflector.createMoodInvoke("com.bridgelabz.moodanalyzer.main.MoodAnalyzer", "analyzeMood", "i am sad", "string", "para");
+        Assert.assertEquals("SAD", moodbyreflection);
 
-    @Test
-    public void usingReflector_InvokeMethodIfParameterNotRight_ShouldHandleException() {
-        try {
-            MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerReflector.createMoodInvoke();
-            Assert.assertEquals("SAD", mooder.analyzeMood(""));
-        } catch (MoodAnalyzerException e) {
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
