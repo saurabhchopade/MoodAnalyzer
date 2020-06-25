@@ -1,7 +1,7 @@
 package com.bridgelabz.moodanalyzer.main;
 
 import com.bridgelabz.moodanalyzer.service.MoodAnalyzerException;
-import com.bridgelabz.moodanalyzer.service.MoodAnalyzerFactory;
+import com.bridgelabz.moodanalyzer.service.MoodAnalyzerReflector;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +16,7 @@ public class MoodAnalyzerTest extends Exception {
     @Before
     public void init() {
 
-        moodAnalyzer = new MoodAnalyzer(null);
+        moodAnalyzer = new MoodAnalyzer();
     }
 
     @Test
@@ -109,7 +109,7 @@ public class MoodAnalyzerTest extends Exception {
     //===================Parameterized object============================================================
     @Test
     public void createMoodAnalyzerParameterizedObjectThroughFactoryClass_IfObjectEqual_TestWillPass() throws Exception {
-        MoodAnalyzer mooder = MoodAnalyzerFactory.createMood("i am sad");
+        MoodAnalyzer mooder = MoodAnalyzerReflector.createMood("i am sad");
         String mood = mooder.analyzeMood();
         Assert.assertEquals("SAD", mood);
     }
@@ -117,7 +117,7 @@ public class MoodAnalyzerTest extends Exception {
     //=======================Checking With Two Objects=======================================================
     @Test
     public void createMoodAnalyzerObjectThroughFactoryClass_IfTwoObjectEqual_TestWillPass() throws Exception {
-        MoodAnalyzer mood1 = MoodAnalyzerFactory.createMood("i am sad");
+        MoodAnalyzer mood1 = MoodAnalyzerReflector.createMood("i am sad");
         MoodAnalyzer mood2 = new MoodAnalyzer("i am sad");
         Assert.assertTrue(mood2.like(mood1));
     }
@@ -125,14 +125,14 @@ public class MoodAnalyzerTest extends Exception {
 
     @Test
     public void createMoodAnalyzeObjectThroughFactoryParaClass_IfMatchesValues_TestWillPass() throws Exception {
-        MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerFactory.createMood1();
+        MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerReflector.createMoodInvoke();
         String mood = mooder.analyzeMood("sad");
         Assert.assertEquals("SAD", mood);
     }
 
     @Test
     public void createMoodAnalyzeForNonParaCheck_IfTwoObjectEqual_TestWillPass() throws Exception {
-        MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerFactory.createMood1();
+        MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerReflector.createMoodInvoke();
         String obj1 = mooder.analyzeMood("sad");
         MoodAnalyzer mood2 = new MoodAnalyzer("i am sad");
         String obj2 = mood2.analyzeMood();
@@ -142,12 +142,13 @@ public class MoodAnalyzerTest extends Exception {
     @Test
     public void giveWrongConstructor_HandleException_TestWillNotPass() throws Exception {
         try {
-            MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerFactory.createMood1();
+            MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerReflector.createMoodInvoke();
             String mood = mooder.analyzeMood(" ");
             Assert.assertEquals("SAD", mood);
         } catch (MoodAnalyzerException e) {
 
         }
     }
+    //=========================Method Invoke======================================================
 
 }
