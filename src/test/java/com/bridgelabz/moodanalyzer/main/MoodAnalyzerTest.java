@@ -155,4 +155,10 @@ public class MoodAnalyzerTest extends Exception {
         MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerReflector.createMoodInvoke();
         Assert.assertEquals("SAD",  mooder.analyzeMood("sad"));
     }
+
+    @Test
+    public void usingReflector_InvokeMethodIfParameterNotRight_ShouldHandleException() throws Exception {
+        MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerReflector.createMoodInvoke();
+        Assert.assertEquals("SAD",  mooder.analyzeMood("sad"));
+    }
 }
