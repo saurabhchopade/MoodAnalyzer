@@ -1,4 +1,4 @@
-package com.bridgelabz;
+package com.bridgelabz.moodanalyzer.service;
 
 public class MoodAnalyzerException extends Exception {
     /**
@@ -6,12 +6,12 @@ public class MoodAnalyzerException extends Exception {
      *
      * @param message
      */
-    enum exeptiontype {
-        ENTEREDNULLL, ENTEREDEMPTY
+   public enum exeptiontype {
+         ENTEREDNULLL, ENTEREDEMPTY
 
     }
 
-    exeptiontype type;
+    public  exeptiontype type;
 
     public MoodAnalyzerException(exeptiontype type, String message) {
         super(message);

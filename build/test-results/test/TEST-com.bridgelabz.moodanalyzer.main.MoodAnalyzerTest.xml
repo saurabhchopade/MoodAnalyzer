@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-25T04:21:49" hostname="saurabh3250" time="0.003">
+  <properties/>
+  <testcase name="usingReflector_InvokeMethodIfParameterNotRight_ShouldHandleException" classname="com.bridgelabz.moodanalyzer.main.MoodAnalyzerTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
