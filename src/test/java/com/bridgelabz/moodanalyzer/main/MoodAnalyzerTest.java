@@ -150,5 +150,9 @@ public class MoodAnalyzerTest extends Exception {
         }
     }
     //=========================Method Invoke======================================================
-
+    @Test
+    public void usingReflector_InvokeMethodCall_ShouldReturnHappy() throws Exception {
+        MoodAnalyzer mooder = (MoodAnalyzer) MoodAnalyzerReflector.createMoodInvoke();
+        Assert.assertEquals("SAD",  mooder.analyzeMood("sad"));
+    }
 }
