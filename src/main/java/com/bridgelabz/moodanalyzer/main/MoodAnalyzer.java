@@ -20,16 +20,6 @@ public class MoodAnalyzer {
         this.message = massage;
     }
 
-    public String analyzeMood(String message) throws MoodAnalyzerException {
-        this.message = message;
-        return analyzeMood();
-    }
-
-    /**
-     * analyzing mood By this method
-     *
-     * @return
-     */
     public String analyzeMood() throws MoodAnalyzerException {
         try {
             if (message.length() == 0)
@@ -43,13 +33,6 @@ public class MoodAnalyzer {
             throw new MoodAnalyzerException(MoodAnalyzerException.exeptiontype.ENTEREDNULLL, "Please Enter Proper Mood");
         }
     }
-
-    /**
-     * Checking two object equal or not
-     *
-     * @param another
-     * @return
-     */
     public boolean like(MoodAnalyzer another) {
         if (this.message.equals(another.message)) {
             return true;
