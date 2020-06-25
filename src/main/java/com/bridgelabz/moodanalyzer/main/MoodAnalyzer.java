@@ -1,6 +1,6 @@
 package com.bridgelabz.moodanalyzer.main;
 
-import com.bridgelabz.moodanalyzer.service.MoodAnalyzerException;
+import com.bridgelabz.moodanalyzer.exception.MoodAnalyzerException;
 
 public class MoodAnalyzer {
     String message;
@@ -10,7 +10,6 @@ public class MoodAnalyzer {
      */
     public MoodAnalyzer()
     {
-
     }
     /**
      * Parameterized Constructor
@@ -44,7 +43,13 @@ public class MoodAnalyzer {
             throw new MoodAnalyzerException(MoodAnalyzerException.exeptiontype.ENTEREDNULLL, "Please Enter Proper Mood");
         }
     }
-//Here We Are Checking Two Objects Are Same Or Not
+
+    /**
+     * Checking two object equal or not
+     *
+     * @param another
+     * @return
+     */
     public boolean like(MoodAnalyzer another) {
         if (this.message.equals(another.message)) {
             return true;
@@ -52,5 +57,4 @@ public class MoodAnalyzer {
             return false;
         }
     }
-
 }
